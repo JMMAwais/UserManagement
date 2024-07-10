@@ -1,0 +1,28 @@
+﻿@model IEnumerable<UserManagement.ViewModel.UsersInRoleVM>
+@{
+    ViewData["Title"] = "UsersWithRoles";
+}
+
+<h3 class="py-2">UsersWithRoles</h3>
+<table class="table table-hover table-bordered table-condensed" id="UsersWithRoles">
+    <thead>
+        <tr>
+            <td><b>Name</b></td>
+            <td><b>Username</b></td>
+            <td><b>Email</b></td>
+            <td><b>Roles</b></td>
+            <td></td>
+        </tr>
+    </thead>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Name</td>
+            <td>@user.Username</td>
+            <td>@user.Email</td>          
+            <td>@user.Role</td>
+            <td></td>
+
+        </tr>
+    }
+</table>

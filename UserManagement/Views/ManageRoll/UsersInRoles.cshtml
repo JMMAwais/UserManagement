@@ -1,0 +1,34 @@
+﻿@model IEnumerable<UserManagement.ViewModel.UsersInRoleVM>
+@{
+    ViewData["Title"] = "UsersInRoles";
+}
+
+<h3 class="py-2">UsersInRoles</h3>
+<table class="table table-hover table-bordered table-condensed" id="UsersWithRoles">
+    <thead>
+        <tr>
+            <td><b>Name</b></td>
+            <td><b>Username</b></td>
+            <td><b>Email</b></td>
+            <td><b>Roles</b></td>
+            <td></td>
+        </tr>
+    </thead>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Name</td>
+            <td>@user.Username</td>
+            <td>@user.Email</td>
+            <td>@user.Role</td>
+            <td>
+                <form method="post" asp-action="DeleteRoll" asp-controller="ManageRoll">
+                    <a asp-action="AssignRoles" asp-controller="ManageRoll" asp-route-Id="@user.UserId" class="btn btn-primary">Assign Role</a>
+                   @*  <button type="submit" asp-action="DeleteRoll" asp-controller="ManageRoll" asp-route-Id="@user.UserId" class="btn btn-danger">Delete</button> *@
+                </form>
+            </td>
+
+        </tr>
+    }
+</table>
+

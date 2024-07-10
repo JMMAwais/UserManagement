@@ -1,0 +1,51 @@
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<UserManagement.Models.AppUser> signInManager
+@if (signInManager.IsSignedIn(User))
+{
+    if (User.IsInRole("Admin"))
+    {
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="ManageRoll" asp-action="GetAllRoles">Manage Rolls</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="UsersWithRoles">Manage Users</a>
+                </li>
+            </ul>
+        </div>
+    }
+
+    <form method="post" id="logoutForm" asp-action="Logoff" asp-controller="Account">
+        <ul class="nav navbar-nav">
+            <li class="nav-link">Hello!, @User.Identity.Name </li>
+            <li class="nav-link"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    </form>
+
+    <ul class="nav navbar-navbar">
+    <li class="nav-item">
+        @*        <li>@Html.ActionLink("Sign Up","Register","Account", routeValues:null, htmlAttributes: new {id="registerLink"})</li>  *@
+        <a class="nav-link" id="registerLink" asp-controller="Account" asp-action="Register">Register</a>
+    </li>
+    </ul>
+}
+else
+{
+    
+    <ul class="nav navbar-navbar">
+       
+        <li class="nav=item">@* @Html.ActionLink("Sign In", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) *@
+            <a class="nav-link" id="loginLink" asp-action="Login" asp-controller="Account">SignIn</a>
+        </li>
+
+    </ul>
+
+    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Manage Rolls</a>
+            </li>
+        </ul>
+    </div>
+
+}

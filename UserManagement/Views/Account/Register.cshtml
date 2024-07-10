@@ -1,0 +1,63 @@
+﻿@model UserManagement.ViewModel.RegisterViewModel
+
+
+<h2>Sign Up</h2>
+<form method="post" asp-action="Register" asp-controller="Account">
+    <h4>Create a New Account</h4>
+    <hr />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group row py-2">
+        <label class="col-md-2" asp-for="Name"></label>
+        <div class="col-md-10">
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row py-2">
+        <label class="col-md-2" asp-for="Email"></label>
+        <div class="col-md-10">
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row py-2">
+        <label class="col-md-2" asp-for="Password"></label>
+        <div class="col-md-10">
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row py-2">
+        <label class="col-md-2" asp-for="ConfirmedPassword"></label>
+        <div class="col-md-10">
+            <input asp-for="ConfirmedPassword" class="form-control" />
+            <span asp-validation-for="ConfirmedPassword" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row py-4">
+        <label class="col-md-2" asp-for="RollName"></label>
+        <div class="col-md-10">
+            <select asp-for="RollName" asp-items="Model.RolesList" class="form-control" ></select>
+            <span asp-validation-for="RollName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group py-2">
+        <div class="col-md-10 ">
+            <input type="submit" value="Register" class="btn btn-success" />
+        </div>
+    </div>
+
+    <p class="col-md-10 ">
+        <a asp-action="Login">Sign In</a>
+    </p>
+
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}

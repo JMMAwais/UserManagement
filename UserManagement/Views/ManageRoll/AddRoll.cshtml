@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "AddRoll";
+}
+
+<h1>AddRoll</h1>
+
+@model UserManagement.ViewModel.RollVM
+
+<h3>Add Roll</h3>
+
+<br />
+<form method="post" asp-controller="ManageRoll" asp-action="AddRoll">
+    <div class="col-md-8">
+        <div class="row py-2">
+            <div class="col-md-6">
+                <label class="form-label">Roll Name</label>
+                <input asp-for="RollName" class="form-control py-2" />
+            </div>
+            <br />          
+               
+        </div>
+        <button type="submit" class="btn btn-primary">Add Roll</button>
+    </div>
+</form>
+

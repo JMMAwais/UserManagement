@@ -1,0 +1,21 @@
+﻿@model UserManagement.ViewModel.AssignRolesVM
+
+
+<h3>AssignRoles</h3>
+<br />
+<form method="post" asp-action="AssignRoles" asp-controller="ManageRoll">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group row py-4">
+        <label class="col-md-2" asp-for="RollName"></label>
+        <div class="col-md-16">
+            <select asp-for="RollName" asp-items="Model.RolesList" class="form-control"></select>
+            <span asp-validation-for="RollName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group py-2">
+        <div class="col-md-6 ">
+            <input type="submit" value="AssignRoles" class="btn btn-success" />
+        </div>
+    </div>
+</form>

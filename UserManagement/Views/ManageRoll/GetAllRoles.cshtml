@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.DotNet.Scaffolding.Shared.Messaging
+@model IEnumerable<IdentityRole>
+
+@{
+    ViewBag.Title = "All Roles";
+}
+
+
+
+<h2>All Roles</h2>
+
+<div class="row">
+    <div class="col-md-2">
+        <a class="btn btn-primary mb-3" style="width:auto" asp-action="AddRoll"
+           asp-controller="ManageRoll">Add new role</a>
+    </div> 
+    <div class="col-md-2">
+        <a class="btn btn-primary mb-3" style="width:auto" asp-action="UsersInRoles"
+           asp-controller="ManageRoll">Users In role</a>
+    </div>
+</div>
+   
+
+
+    <table class="table table-hover table-bordered table-condensed" id="Roles">
+        <thead>
+            <tr>
+                <td><b>Role Id</b></td>
+                <td><b>Role Name</b></td>
+                <td></td>
+            </tr>
+        </thead>
+        @foreach (var roll in Model)
+        {
+            <tr>
+                <td>@roll.Id</td>
+                <td>@roll.Name</td>
+                <td>
+                    <form method="post" asp-action="DeleteRoll" asp-controller="ManageRoll">
+                        <a asp-action="EditRoll" asp-controller="ManageRoll" asp-route-Id="@roll.Id" class="btn btn-primary">Edit</a>
+                        <button type="submit" asp-action="DeleteRoll" asp-controller="ManageRoll" asp-route-Id="@roll.Id" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+
+            </tr>
+        }
+    </table>
+
+ 
+
+
+
